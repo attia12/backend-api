@@ -1,0 +1,8 @@
+package com.example.spring_security_asymetric_encrytion.user;
+
+@RestController
+@RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
+@Tag(name = "User", description = "User API")
+public class UserController {
+}

@@ -1,0 +1,9 @@
+package com.example.spring_security_asymetric_encrytion.exception;
+
+import lombok.Getter;
+
+@Getter
+public class BusinessException extends RuntimeException {
+    public BusinessException(String s) {
+    }
+}
