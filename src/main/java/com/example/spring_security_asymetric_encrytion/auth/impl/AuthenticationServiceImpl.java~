@@ -68,7 +68,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.setRoles(roles);
         log.debug("Saving user {}", user);
         this.userRepository.save(user);
-        // in case you don t have cascade option in many to many 
+        // in case you don t have cascade option in many to many
 
 //        final List<User> users = new ArrayList<>();
 //        users.add(user);
@@ -81,7 +81,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse refreshToken(RefreshRequest req) {
-        return null;
+        final String accessToken = this.jwtService.refreshAccessToken(req.getRefreshToken());
+        return AuthenticationResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(req.getRefreshToken())
+                .tokenType("Bearer")
+                .build();
     }
 
     private void checkPassword(String password, String confirmPassword) {

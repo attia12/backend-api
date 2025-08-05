@@ -44,7 +44,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
        );
        final User user = (User) auth.getPrincipal();
        final String accessToken = this.jwtService.generateAccessToken(user.getUsername());
-       final String refreshToken=this.jwtService.refreshAccessToken(user.getUsername());
+       final String refreshToken=this.jwtService.generateRefreshToken(user.getUsername());
 
         return AuthenticationResponse.builder()
                 .accessToken(accessToken)
